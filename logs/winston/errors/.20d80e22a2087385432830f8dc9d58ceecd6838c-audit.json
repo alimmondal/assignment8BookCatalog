@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\webDevelopment\\NextLevelWebDevelopment\\assignment\\assignment8BookCatalog\\logs\\winston\\errors\\.20d80e22a2087385432830f8dc9d58ceecd6838c-audit.json",
+    "files": [
+        {
+            "date": 1693896822828,
+            "name": "D:\\webDevelopment\\NextLevelWebDevelopment\\assignment\\assignment8BookCatalog\\logs\\winston\\errors\\phu-2023-05-09-12-error.log",
+            "hash": "f39db2d95ff7974ebdec942d74e2f2afbc9553f49d00cd1d74ffc4c425d9f255"
+        }
+    ],
+    "hashType": "sha256"
+}

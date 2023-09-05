@@ -1,0 +1,111 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String @id @default(uuid())
+  name       String
+  email      String @unique
+  password   String
+  role       roles? @default(Customer) // 'admin' or 'customer'
+  contactNo  String
+  address    String
+  profileImg String
+
+  ReviewAndRating ReviewAndRating[]
+  orders          Order[]
+
+  @@map("user")
+}
+
+model Category {
+  id    String @id @default(uuid())
+  title String
+
+  books Book[]
+
+  @@map("category")
+}
+
+model Book {
+  id              String   @id @default(uuid())
+  title           String
+  author          String
+  price           Float
+  genre           String
+  publicationDate DateTime @default(now())
+  categoryId      String
+
+  category        Category          @relation(fields: [categoryId], references: [id])
+  ReviewAndRating ReviewAndRating[]
+
+  @@map("book")
+}
+
+model ReviewAndRating {
+  id     String @id @default(uuid())
+  review String
+  rating Int
+  userId String
+  bookId String
+
+  user User @relation(fields: [userId], references: [id])
+  book Book @relation(fields: [bookId], references: [id])
+
+  @@map("reviewRating")
+}
+
+model Order {
+  id           String      @id @default(uuid())
+  userId       String
+  orderedBooks Json
+  status       orderStatus @default(pending)
+  createdAt    DateTime    @default(now())
+
+  // Define a relationship to the User model
+  user User @relation(fields: [userId], references: [id])
+}
+
+// model Order {
+//   id        String      @id @default(uuid())
+//   userId    String      
+//   status    orderStatus @default(pending)
+//   createdAt DateTime    @default(now())
+
+//   orderedBooks OrderedBook[]
+//   user         User          @relation(fields: [userId], references: [id])
+
+//   @@map("order")
+// }
+
+// model OrderedBook {
+//   id       String @id @default(uuid())
+//   orderId  String
+//   bookId   String 
+//   quantity Int
+
+//   order Order @relation(fields: [orderId], references: [id])
+//   book  Book  @relation(fields: [bookId], references: [id])
+
+//   @@map("orderedBook")
+// }
+
+enum roles {
+  Customer
+  Admin
+  Author
+}
+
+enum orderStatus {
+  pending
+  aproved
+  uncertain
+}
