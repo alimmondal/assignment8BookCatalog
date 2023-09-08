@@ -1,6 +1,7 @@
 import express from 'express';
 import { BookRoutes } from '../modules/book/book.routes';
 import { categoryRoutes } from '../modules/category/category.routes';
+import { OrderRoutes } from '../modules/order/order.routes';
 import { ReviewRatingRoutes } from '../modules/reviewRating/reviewRating.routes';
 import { UserRoutes } from '../modules/user/user.routes';
 
@@ -30,21 +31,10 @@ const moduleRoutes = [
     path: '/reviews',
     route: ReviewRatingRoutes,
   },
-  // {
-  //   path: '/semester-registration',
-  //   route: semesterRegistrationRoutes
-  // }, {
-  //   path: '/offered-courses',
-  //   route: offeredCourseRoutes
-  // },
-  // {
-  //   path: '/offered-course-sections',
-  //   route: offeredCourseSectionRoutes
-  // },
-  // {
-  //   path: '/offered-course-class-schedules',
-  //   route: offeredCourseClassScheduleRoutes
-  // }
+  {
+    path: '/orders',
+    route: OrderRoutes,
+  },
 ];
 
 moduleRoutes.forEach(route => router.use(route.path, route.route));

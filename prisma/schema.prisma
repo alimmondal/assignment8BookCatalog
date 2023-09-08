@@ -67,11 +67,12 @@ model Order {
   id           String      @id @default(uuid())
   userId       String
   orderedBooks Json
-  status       orderStatus @default(pending)
+  status       String @default("pending")
   createdAt    DateTime    @default(now())
 
   // Define a relationship to the User model
   user User @relation(fields: [userId], references: [id])
+  @@map("order")
 }
 
 // model Order {
@@ -104,8 +105,3 @@ enum roles {
   Author
 }
 
-enum orderStatus {
-  pending
-  aproved
-  uncertain
-}
