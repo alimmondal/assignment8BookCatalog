@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Book, Prisma } from '@prisma/client';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import prisma from '../../../shared/prisma';
 import {
-  facultyRelationalFields,
-  facultyRelationalFieldsMapper,
-  facultySearchableFields,
+  bookRelationalFields,
+  bookRelationalFieldsMapper,
+  bookSearchableFields,
 } from './book.constants';
-import { IFacultyFilterRequest } from './book.interface';
+import { IBookFilterRequest } from './book.interface';
 
 const insertIntoDB = async (data: Book): Promise<Book> => {
   const result = await prisma.book.create({
@@ -21,7 +22,7 @@ const insertIntoDB = async (data: Book): Promise<Book> => {
 };
 
 const getAllFromDB = async (
-  filters: IFacultyFilterRequest,
+  filters: IBookFilterRequest,
   options: IPaginationOptions
 ): Promise<IGenericResponse<Book[]>> => {
   const { limit, page, skip } = paginationHelpers.calculatePagination(options);
@@ -31,7 +32,7 @@ const getAllFromDB = async (
 
   if (searchTerm) {
     andConditions.push({
-      OR: facultySearchableFields.map(field => ({
+      OR: bookSearchableFields.map(field => ({
         [field]: {
           contains: searchTerm,
           mode: 'insensitive',
@@ -43,9 +44,9 @@ const getAllFromDB = async (
   if (Object.keys(filterData).length > 0) {
     andConditions.push({
       AND: Object.keys(filterData).map(key => {
-        if (facultyRelationalFields.includes(key)) {
+        if (bookRelationalFields.includes(key)) {
           return {
-            [facultyRelationalFieldsMapper[key]]: {
+            [bookRelationalFieldsMapper[key]]: {
               id: (filterData as any)[key],
             },
           };
@@ -131,60 +132,10 @@ const deleteByIdFromDB = async (id: string): Promise<Book> => {
   return result;
 };
 
-// const assignCourses = async (
-//   id: string,
-//   payload: string[]
-// ): Promise<CourseFaculty[]> => {
-//   await prisma.courseFaculty.createMany({
-//     data: payload.map(courseId => ({
-//       facultyId: id,
-//       courseId: courseId,
-//     })),
-//   });
-
-//   const assignCoursesData = await prisma.courseFaculty.findMany({
-//     where: {
-//       facultyId: id,
-//     },
-//     include: {
-//       course: true,
-//     },
-//   });
-
-//   return assignCoursesData;
-// };
-
-// const removeCourses = async (
-//   id: string,
-//   payload: string[]
-// ): Promise<CourseFaculty[] | null> => {
-//   await prisma.courseFaculty.deleteMany({
-//     where: {
-//       facultyId: id,
-//       courseId: {
-//         in: payload,
-//       },
-//     },
-//   });
-
-//   const assignCoursesData = await prisma.courseFaculty.findMany({
-//     where: {
-//       facultyId: id,
-//     },
-//     include: {
-//       course: true,
-//     },
-//   });
-
-//   return assignCoursesData;
-// };
-
 export const BookService = {
   insertIntoDB,
   getAllFromDB,
   getByIdFromDB,
   updateOneInDB,
   deleteByIdFromDB,
-  // assignCourses,
-  // removeCourses,
 };

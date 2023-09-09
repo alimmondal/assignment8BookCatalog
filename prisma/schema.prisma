@@ -75,29 +75,7 @@ model Order {
   @@map("order")
 }
 
-// model Order {
-//   id        String      @id @default(uuid())
-//   userId    String      
-//   status    orderStatus @default(pending)
-//   createdAt DateTime    @default(now())
 
-//   orderedBooks OrderedBook[]
-//   user         User          @relation(fields: [userId], references: [id])
-
-//   @@map("order")
-// }
-
-// model OrderedBook {
-//   id       String @id @default(uuid())
-//   orderId  String
-//   bookId   String 
-//   quantity Int
-
-//   order Order @relation(fields: [orderId], references: [id])
-//   book  Book  @relation(fields: [bookId], references: [id])
-
-//   @@map("orderedBook")
-// }
 
 enum roles {
   Customer

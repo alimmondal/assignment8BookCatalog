@@ -80,9 +80,6 @@ const getByIdFromDB = async (id: string): Promise<Category | null> => {
     where: {
       id,
     },
-    // include: {
-    //   academicFaculty: true,
-    // },
   });
   return result;
 };
@@ -96,9 +93,6 @@ const updateOneInDB = async (
       id,
     },
     data: payload,
-    // include: {
-    //   academicFaculty: true,
-    // },
   });
   return result;
 };
@@ -108,9 +102,6 @@ const deleteByIdFromDB = async (id: string): Promise<Category> => {
     where: {
       id,
     },
-    // include: {
-    //   academicFaculty: true,
-    // },
   });
   return result;
 };

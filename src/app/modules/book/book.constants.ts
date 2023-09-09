@@ -1,28 +1,25 @@
-export const facultyFilterableFields: string[] = [
-    'searchTerm',
-    'facultyId',
-    'email',
-    'contactNo',
-    'gender',
-    'bloodGroup',
-    'gender',
-    'designation',
-    'academicFacultyId',
-    'academicDepartmentId'
+export const bookFilterableFields: string[] = [
+  'searchTerm',
+  'title',
+  'author',
+  'genre',
+  'bloodGroup',
+  'price',
+  'publicationDate',
+  'categoryId',
 ];
 
-export const facultySearchableFields: string[] = [
-    'firstName',
-    'lastName',
-    'middleName',
-    'email',
-    'contactNo',
-    'facultyId',
-    'designation'
+export const bookSearchableFields: string[] = [
+  'title',
+  'author',
+  'genre',
+  'bloodGroup',
+  'price',
+  'publicationDate',
+  'categoryId',
 ];
 
-export const facultyRelationalFields: string[] = ['academicFacultyId', 'academicDepartmentId'];
-export const facultyRelationalFieldsMapper: { [key: string]: string } = {
-    academicFacultyId: 'academicFaculty',
-    academicDepartmentId: 'academicDepartment'
+export const bookRelationalFields: string[] = ['categoryId'];
+export const bookRelationalFieldsMapper: { [key: string]: string } = {
+  categoryId: 'categoryId',
 };
