@@ -1,20 +1,20 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '../../../shared/catchAsync';
-import sendResponse from '../../../shared/sendResponse';
-import { UserService } from './user.service';
-import { userFilterableFields } from './user.constants';
 import pick from '../../../shared/pick';
+import sendResponse from '../../../shared/sendResponse';
+import { userFilterableFields } from './user.constants';
+import { UserService } from './user.service';
 
-const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await UserService.insertIntoDB(req.body);
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'User created successfully',
-    data: result,
-  });
-});
+// const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
+//   const result = await UserService.insertIntoDB(req.body);
+//   sendResponse(res, {
+//     statusCode: httpStatus.OK,
+//     success: true,
+//     message: 'User created successfully',
+//     data: result,
+//   });
+// });
 
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
   const filters = pick(req.query, userFilterableFields);
@@ -64,7 +64,6 @@ const deleteFromDB = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const UserController = {
-  insertIntoDB,
   getAllFromDB,
   getByIdFromDB,
   updateIntoDB,

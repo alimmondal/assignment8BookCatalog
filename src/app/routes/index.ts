@@ -1,4 +1,5 @@
 import express from 'express';
+import { AuthRoutes } from '../modules/auth/auth.routes';
 import { BookRoutes } from '../modules/book/book.routes';
 import { categoryRoutes } from '../modules/category/category.routes';
 import { OrderRoutes } from '../modules/order/order.routes';
@@ -11,8 +12,8 @@ const moduleRoutes = [
   // ... routes
 
   {
-    path: '/auth/signup',
-    route: UserRoutes,
+    path: '/auth',
+    route: AuthRoutes,
   },
   {
     path: '/users',

@@ -15,12 +15,6 @@ router.get(
   UserController.getByIdFromDB
 );
 
-router.post(
-  '/',
-  //   validateRequest(UserValidation.create),
-  UserController.insertIntoDB
-);
-
 router.patch(
   '/:id',
   // auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),

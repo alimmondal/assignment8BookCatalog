@@ -7,10 +7,11 @@ Vercel live Link:
 User
 
 1. api/v1/auth/signup (POST)
-2. api/v1/users (GET)
-3. api/v1/users/70e39b83-0e5c-4bdb-a782-3e28ac83223b (Single GET)
-4. api/v1/users/70e39b83-0e5c-4bdb-a782-3e28ac83223b (PATCH)
-5. api/v1/users/a023433a-56ea-4812-9a37-484280d24fff (DELETE)
+1. api/v1/auth/signin (POST)
+1. api/v1/users (GET)
+1. api/v1/users/70e39b83-0e5c-4bdb-a782-3e28ac83223b (Single GET)
+1. api/v1/users/70e39b83-0e5c-4bdb-a782-3e28ac83223b (PATCH)
+1. api/v1/users/a023433a-56ea-4812-9a37-484280d24fff (DELETE)
 <!-- 6. api/v1/profile (GET) -->
 
 Category
