@@ -15,7 +15,7 @@ model User {
   name       String
   email      String @unique
   password   String
-  role       roles? @default(Customer) // 'admin' or 'customer'
+  role       roles? @default(customer) // 'admin' or 'customer'
   contactNo  String
   address    String
   profileImg String
@@ -41,7 +41,7 @@ model Book {
   author          String
   price           Float
   genre           String
-  publicationDate DateTime @default(now())
+  publicationDate String
   categoryId      String
 
   category        Category          @relation(fields: [categoryId], references: [id])
@@ -78,8 +78,8 @@ model Order {
 
 
 enum roles {
-  Customer
-  Admin
-  Author
+  customer
+  admin
+  author
 }
 

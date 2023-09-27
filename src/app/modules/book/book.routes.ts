@@ -8,17 +8,19 @@ const router = express.Router();
 router.get('/', BookController.getAllFromDB);
 
 router.get('/:id', BookController.getByIdFromDB);
+router.get('/:categoryId/category', BookController.getByCategoryIdFromDB);
 
 router.post(
   '/create-book',
   // validateRequest(BookValidation.create),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   BookController.insertIntoDB
 );
 
 router.patch(
   '/:id',
   // validateRequest(BookValidation.update),
-  // auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   BookController.updateOneInDB
 );
 
