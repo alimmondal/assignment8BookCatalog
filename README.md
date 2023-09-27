@@ -2,7 +2,7 @@ Application Routes:
 
 Vercel live Link:
 
-1. https://sql-book-catalog.vercel.app/
+2. https://sql-book-catalog.vercel.app/
 
 User
 
@@ -13,8 +13,6 @@ User
 1. api/v1/users/94b02a8c-24c3-436a-8dc2-3702e6006767 (PATCH)
 1. api/v1/users/89d54e75-6ded-44aa-a8a8-e7eb473bc016 (DELETE)
 <!-- 6. api/v1/profile (GET) -->
-
-access token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4OWQ1NGU3NS02ZGVkLTQ0YWEtYThhOC1lN2ViNDczYmMwMTYiLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2OTU4MDg2MzIsImV4cCI6MTcyNzM0NDYzMn0.25ngKNg6-GFTVUCuGr1aey2p980iRluGhUmPi1SQuMY
 
 Category
 

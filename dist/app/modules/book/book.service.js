@@ -107,6 +107,14 @@ const getByIdFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
     });
     return result;
 });
+const getByCategoryIdFromDB = (categoryId) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield prisma_1.default.book.findMany({
+        where: {
+            categoryId: categoryId,
+        },
+    });
+    return result;
+});
 const updateOneInDB = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield prisma_1.default.book.update({
         where: {
@@ -136,4 +144,5 @@ exports.BookService = {
     getByIdFromDB,
     updateOneInDB,
     deleteByIdFromDB,
+    getByCategoryIdFromDB,
 };

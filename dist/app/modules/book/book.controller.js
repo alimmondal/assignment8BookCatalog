@@ -50,6 +50,16 @@ const getByIdFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
         data: result,
     });
 }));
+const getByCategoryIdFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { categoryId } = req.params;
+    const result = yield book_service_1.BookService.getByCategoryIdFromDB(categoryId);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Book fetched by CategoryID successfully',
+        data: result,
+    });
+}));
 const updateOneInDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const result = yield book_service_1.BookService.updateOneInDB(id, req.body);
@@ -70,34 +80,11 @@ const deleteByIdFromDB = (0, catchAsync_1.default)((req, res) => __awaiter(void 
         data: result,
     });
 }));
-// const assignCourses = catchAsync(async (req: Request, res: Response) => {
-//   const { id } = req.params;
-//   console.log(req.body.faculties);
-//   const result = await FacultyService.assignCourses(id, req.body.courses);
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'Course faculty assigned successfully',
-//     data: result,
-//   });
-// });
-// const removeCourses = catchAsync(async (req: Request, res: Response) => {
-//   const { id } = req.params;
-//   console.log(req.body.faculties);
-//   const result = await FacultyService.removeCourses(id, req.body.courses);
-//   sendResponse(res, {
-//     statusCode: httpStatus.OK,
-//     success: true,
-//     message: 'Course faculty deleted successfully',
-//     data: result,
-//   });
-// });
 exports.BookController = {
     insertIntoDB,
     getAllFromDB,
     getByIdFromDB,
     updateOneInDB,
     deleteByIdFromDB,
-    // assignCourses,
-    // removeCourses,
+    getByCategoryIdFromDB,
 };

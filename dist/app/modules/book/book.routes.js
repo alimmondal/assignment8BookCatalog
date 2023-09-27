@@ -11,12 +11,12 @@ const book_controller_1 = require("./book.controller");
 const router = express_1.default.Router();
 router.get('/', book_controller_1.BookController.getAllFromDB);
 router.get('/:id', book_controller_1.BookController.getByIdFromDB);
+router.get('/:categoryId/category', book_controller_1.BookController.getByCategoryIdFromDB);
 router.post('/create-book', 
 // validateRequest(BookValidation.create),
-book_controller_1.BookController.insertIntoDB);
+(0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.ADMIN), book_controller_1.BookController.insertIntoDB);
 router.patch('/:id', 
 // validateRequest(BookValidation.update),
-// auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
-book_controller_1.BookController.updateOneInDB);
+(0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.ADMIN), book_controller_1.BookController.updateOneInDB);
 router.delete('/:id', (0, auth_1.default)(user_1.ENUM_USER_ROLE.SUPER_ADMIN, user_1.ENUM_USER_ROLE.ADMIN), book_controller_1.BookController.deleteByIdFromDB);
 exports.BookRoutes = router;
